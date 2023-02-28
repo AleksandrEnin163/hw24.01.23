@@ -1,0 +1,57 @@
+public Queue(int size)
+{
+    arr = new int[size];
+    capacity = size;
+    head = 0;
+    tail = -1;
+    count = 0;
+}
+
+public void pushToEnd(int data)
+{
+    if (isFull()) {
+        System.out.println("Queue is full, cannot add more elements");
+        return;
+    }
+
+    tail = (tail + 1) % capacity;
+    arr[tail] = data;
+    count++;
+}
+
+public void remove()
+{
+    if (isEmpty()) {
+        System.out.println("Queue is empty, cannot remove any element");
+        return;
+    }
+
+    head = (head + 1) % capacity;
+    count--;
+}
+
+public int peek()
+{
+    if (isEmpty()) {
+        System.out.println("Queue is empty, cannot peek any element");
+        return -1;
+    }
+
+    return arr[head];
+}
+
+public boolean isEmpty()
+{
+    return count == 0;
+}
+
+public boolean isFull()
+{
+    return count == capacity;
+}
+
+public int size()
+{
+    return count;
+}
+
